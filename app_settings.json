@@ -1,0 +1,19 @@
+{
+    "actions": [
+        {
+            "method": "GET",
+            "path": "/app/test",
+            "action": "action.SimpleAction:SimpleAction"
+        },
+        {
+            "method": "GET",
+            "path": "/app/weibo/oauth",
+            "action": "action.SinaAction:WeiboOauthAction"
+        },
+        {
+            "method": "GET",
+            "path": "/app/weibo/postcode",
+            "action": "action.SinaAction:WeiboPostcodeAction"
+        }
+    ]
+}
