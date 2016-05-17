@@ -14,6 +14,11 @@
             "method": "GET",
             "path": "/app/weibo/postcode",
             "action": "action.SinaAction:WeiboPostcodeAction"
+        },
+        {
+            "method": "POST",
+            "path": "/app/parsexlsx",
+            "action": "action.GradeStatAction:ParseXlsxAction"
         }
     ]
 }

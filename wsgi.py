@@ -8,7 +8,10 @@ import traceback
 
 
 def loadJsonFile(jsonFile):
-    f = codecs.open(jsonFile, encoding='utf-8')
+    try:
+        f = codecs.open(jsonFile, encoding='utf-8')
+    except:
+        raise Exception('error while loading app_setting.json')
     return json.loads(f.read())
 
 

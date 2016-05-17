@@ -16,7 +16,7 @@ config = {
     'authorize_url': 'https://api.weibo.com/oauth2/authorize',
     # 'get_access_token_url': 'https://api.weibo.com/oauth2/access_token',
     'get_user_timeline_url': 'https://api.weibo.com/2/statuses/user_timeline.json',
-    'lastest_num': 5,
+    'lastest_num': 100,
 }
 
 
@@ -61,7 +61,7 @@ class WeiboPostcodeAction(BaseAction):
         jsonStr = response.read()
         print 'DEBUG', jsonStr
         accessInfo = json.loads(jsonStr)
-        lastestTexts = self.getLastWeibo(accessInfo, length=100)
+        lastestTexts = self.getLastWeibo(accessInfo, length=config['lastest_num'])
         emojis = self.statEmoji(lastestTexts)
 
         body = '\n'.join(lastestTexts + ['\n'] + emojis)

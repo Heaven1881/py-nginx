@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>成绩分布统计</title>
+</head>
+<body>
+
+<form id="uploadForm" enctype="multipart/form-data">
+    <p>请选择xlsx 文件</p>
+    <input id="file" type="file" name="xlsxFile"/>
+    <button id="btn-start" type="button">开始处理</button>
+</form>
+
+<div class="select-view"></div>
+
+<div class="charts-view"></div>
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="//cdn.hcharts.cn/highcharts/highcharts-more.js"></script>
+<script src="//cdn.hcharts.cn/highmaps/modules/data.js"></script>
+<script src="//cdn.hcharts.cn/highmaps/modules/map.js"></script>
+<script src="/visual.js"></script>
+<script src="/index.js"></script>
+</body>
+</html>
