@@ -6,8 +6,10 @@
 相关的文档参考自：https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-applications-using-uwsgi-web-server-with-nginx
 
 
-### 清华大学SOA课程的一次小作业，使用新浪Oauth协议获取最近用户发布的100条微博，并统计emoji表情个数，判断用户的幸福指数
-## 说明
+## 清华大学SOA课程小作业
+使用新浪Oauth协议获取最近用户发布的100条微博，并统计emoji表情个数，判断用户的幸福指数
+
+### 说明
 - 使用nginx+uwsgi部署
 - 根据新浪用户的授权，获取用户最近的100条微博， 统计里面emoji表情的个数，判断幸福指数
 - 幸福指数的定义如下：
