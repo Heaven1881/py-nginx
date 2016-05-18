@@ -1,3 +1,0 @@
-#!/bin/sh
-
-kill -HUP `cat /tmp/uwsgi/uwsgi_pid.pid`
