@@ -1,7 +1,7 @@
 {
     "actions": [
         {
-            "method": "GET",
+            "method": ["GET", "POST"],
             "path": "/app/test",
             "action": "action.SimpleAction:SimpleAction"
         },
