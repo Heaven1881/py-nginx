@@ -24,7 +24,9 @@ class WeiboOauthAction(BaseAction):
     '''
     处理用户的请求，将其引导至新浪授权页面
     '''
-    def run(self, env, data):
+    name = 'WeiboOauthAction'
+
+    def run(self):
         # 重定向到授权页面
         authorizeUrl = config['authorize_url']
         encodedArgs = urllib.urlencode({
@@ -33,41 +35,39 @@ class WeiboOauthAction(BaseAction):
             'redirect_uri': config['redirect_uri']
         })
         url = authorizeUrl + '?' + encodedArgs
-        print 'DEBUG', url
+        self.logging('redirect url=%s' % url)
 
-        body = ''
-        header = [('Location', url)]
-        status = '301 Moved Permanently'
-        return body, header, status
+        self.setHeader({'Location': url})
+        self.setStatus('301 Moved Permanently')
+        return ''
 
 
 class WeiboPostcodeAction(BaseAction):
     '''
     处理新浪的回调并获取用户的信息
     '''
-    def run(self, env, data):
+    name = 'WeiboPostcodeAction'
+
+    def run(self):
+        code = self.checkValue('code', required=True)
         # 获取access info
         encodedArgs = urllib.urlencode({
             'client_id': config['client_id'],
             'client_secret': config['client_secret'],
             'grant_type': 'authorization_code',
             'redirect_uri': config['redirect_uri'],
-            'code': data['code'][0],
+            'code': code,
         })
-        print 'INFO', encodedArgs
+        self.logging(encodedArgs)
         conn = httplib.HTTPSConnection('api.weibo.com')
         conn.request("POST", '/oauth2/access_token' + '?' + encodedArgs)
         response = conn.getresponse()
         jsonStr = response.read()
-        print 'DEBUG', jsonStr
         accessInfo = json.loads(jsonStr)
         lastestTexts = self.getLastWeibo(accessInfo, length=config['lastest_num'])
         emojis = self.statEmoji(lastestTexts)
 
-        body = '\n'.join(lastestTexts + ['\n'] + emojis)
-        header = []
-        status = '200 OK'
-        return body, header, status
+        return '\n'.join(lastestTexts + ['\n'] + emojis)
 
     def statEmoji(self, testlist):
         emojiList = []

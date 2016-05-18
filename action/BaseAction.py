@@ -19,7 +19,7 @@ class BaseAction:
             keep_blank_values=True
         )
 
-        self.response_header = []
+        self.response_header = {}
         self.response_status = '200 OK'
 
     def checkValue(self, key, required=False, default=None):
@@ -49,8 +49,8 @@ class BaseAction:
         else:
             return valuelist
 
-    def setHeader(self, headerTuple):
-        self.response_header += [headerTuple]
+    def setHeader(self, header):
+        self.response_header.update(header)
 
     def setStatus(self, status):
         self.response_status = str(status)
@@ -69,6 +69,6 @@ class BaseAction:
                 'err': 1,
                 'res': str(e)
             })
-        self.response_header += [('Content-Length', str(len(response_body)))]
-        self.start_response(self.response_status, self.response_header)
+        self.setHeader({'Content-Length': str(len(response_body))})
+        self.start_response(self.response_status, self.response_header.items())
         return [response_body]

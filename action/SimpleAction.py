@@ -11,7 +11,7 @@ class SimpleAction(BaseAction):
     测试获取POST和GET数据
     '''
     def run(self):
-        self.setHeader(('Content-Type', 'application/json'))
+        self.setHeader({'Content-Type': 'application/json'})
         # 检查get数据
         firstGet = self.checkValue('get', required=True)
         firstGetOptional = self.checkValue('get-optional', default='get-optional not given')
