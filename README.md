@@ -11,7 +11,7 @@
 
 使用如下命令启动服务的方法
 ```bash
-$ wsgi --py-autoreload=1 --ini wsgi.ini
+$ uwsgi --py-autoreload=1 --ini wsgi.ini
 ```
 
 ## 内容说明
