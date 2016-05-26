@@ -5,6 +5,8 @@
 
 相关的文档参考自：https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-applications-using-uwsgi-web-server-with-nginx
 
+相关的nginx+python也可以参考我的博客：[基于Nginx搭建Python WSGI应用](http://heaven1881.github.io/2016/05/25/nginx-python/)
+
 ## 主要结构说明
 - action文件夹下存放调用的单个py脚本
 - 所有脚本的调用配置参照app_setting.json
