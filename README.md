@@ -7,14 +7,31 @@
 
 相关的nginx+python也可以参考我的博客：[基于Nginx搭建Python WSGI应用](http://heaven1881.github.io/2016/05/25/nginx-python/)
 
-## 主要结构说明
-- action文件夹下存放调用的单个py脚本
-- 所有脚本的调用配置参照app_setting.json
+## 部署方法
+在部署之前，需要确保服务器上安装了`nginx`以及`uwsgi`，你可以自己从网络获取安装方法，也可以参考这篇博客：[基于Nginx搭建Python WSGI应用](http://heaven1881.github.io/2016/05/25/nginx-python/)
+
+克隆代码
+```bash
+$ cd /git
+$ git clone https://github.com/Heaven1881/py-nginx.git
+```
+配置nginx
+```
+$ cd /etc/nginx/cond.f
+# ln -s /git/py-nginx/py-nginx.conf
+```
+> 你也可以直接将`py-nginx.conf`的内容拷贝到nginx配置文件内的对应位置
 
 使用如下命令启动服务的方法
 ```bash
 $ uwsgi --py-autoreload=1 --ini wsgi.ini
 ```
+
+## 主要结构说明
+- action文件夹下存放调用的单个py脚本
+- 所有脚本的调用配置参照app_setting.json
+
+
 
 ## 内容说明
 ### 清华大学SOA课程小作业
