@@ -27,9 +27,18 @@ $ cd /etc/nginx/cond.d
 ```
 > 你也可以直接将`py-nginx.conf`的内容拷贝到nginx配置文件内的对应位置
 
-使用如下命令启动服务的方法
+使用如下命令重启nginx以让服务生效
+```
+sudo service nginx restart
+```
+
+使用如下命令启动服务的方法，可能会提示一些目录不存在，需要手动创建对应目录
 ```bash
 $ uwsgi --py-autoreload=1 --ini wsgi.ini
+```
+使用如下命令关闭服务器
+```
+$ kill `cat /tmp/uwsgi/uwsgi_pid.pid`
 ```
 
 ## 主要结构说明
