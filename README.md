@@ -15,9 +15,14 @@
 $ cd /git
 $ git clone https://github.com/Heaven1881/py-nginx.git
 ```
+在开始前，需要将`py-nginx.conf`和`wsgi.ini`中的配置修改为你的配置，大部分配置都可以使用默认值，只需要修改如下几项：
+- `py-nginx.conf`中，将`root /homw/winton/www/py-nginx`指定的目录修改为项目实际的目录
+- `wsgi.ini`中，将`chdir  = /home/winton/www/py-nginx`指定的目录修改为项目实际的目录
+- 需要保证nginx对上面的目录有读权限
+
 配置nginx
 ```
-$ cd /etc/nginx/cond.f
+$ cd /etc/nginx/cond.d
 # ln -s /git/py-nginx/py-nginx.conf
 ```
 > 你也可以直接将`py-nginx.conf`的内容拷贝到nginx配置文件内的对应位置
